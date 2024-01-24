@@ -9,6 +9,6 @@ RUN apk add --no-cache \
 COPY .docker/start.sh .
 RUN chmod +x start.sh
 
-RUN crontab -l | { cat; echo "*/1 * * * * /src/start.sh"; } | crontab -
+RUN crontab -l | { cat; echo "0 */6 * * * /src/start.sh"; } | crontab -
 
 CMD ["crond", "-f"]
