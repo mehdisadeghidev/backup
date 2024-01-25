@@ -3,7 +3,7 @@ FROM alpine:3.19
 WORKDIR /src
 
 RUN apk add --no-cache \
-    postgresql-client \
+    postgresql15-client \
     aws-cli
 
 COPY .docker/start.sh .

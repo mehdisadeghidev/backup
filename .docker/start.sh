@@ -2,8 +2,8 @@
 
 set -e
 
-pg_dump ${DATABASE_URL} > /tmp/dump.sql
+pg_dump -Fc -Z9  --file=file.dump ${DATABASE_URL}
 
-aws --endpoint-url ${AWS_ENDPOINT} s3 cp /tmp/dump.sql s3://${AWS_BUCKET}/$(date -u +"%Y-%m-%dT%H-%M").sql
+aws --endpoint-url ${AWS_ENDPOINT} s3 cp file.dump s3://${AWS_BUCKET}/$(date -u +"%Y-%m-%dT%H-%M").dump
 
-rm /tmp/dump.sql
+rm file.dump
